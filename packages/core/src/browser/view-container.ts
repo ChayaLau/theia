@@ -250,10 +250,10 @@ export class ViewContainer extends BaseWidget implements StatefulWidget, Applica
         const existingCommand = this.commandRegistry.getCommand(commandId);
         if (existingHandler && existingCommand) {
             this.toDisposeOnUpdateTitle.push(this.commandRegistry.registerCommand({ ...existingCommand, id: newId }, {
-                execute: (w, ...args) => this.commandRegistry.executeCommand(commandId, ...args),
-                isToggled: (w, ...args) => this.commandRegistry.isToggled(commandId, ...args),
-                isEnabled: (w, ...args) => this.commandRegistry.isEnabled(commandId, ...args),
-                isVisible: (w, ...args) => w === this.getTabBarDelegate() && this.commandRegistry.isVisible(commandId, ...args),
+                execute: (_widget, ...args) => this.commandRegistry.executeCommand(commandId, ...args),
+                isToggled: (_widget, ...args) => this.commandRegistry.isToggled(commandId, ...args),
+                isEnabled: (_widget, ...args) => this.commandRegistry.isEnabled(commandId, ...args),
+                isVisible: (widget, ...args) => widget === this.getTabBarDelegate() && this.commandRegistry.isVisible(commandId, ...args),
             }));
             this.toDisposeOnUpdateTitle.push(this.toolbarRegistry.registerItem({
                 ...options,
