@@ -234,8 +234,8 @@ export class ViewContainer extends BaseWidget implements StatefulWidget, Applica
             const group = this.getToggleVisibilityGroupLabel();
             for (const part of allParts) {
                 const existingId = this.toggleVisibilityCommandId(part);
-                const { caption, label } = part.wrapped.title;
-                this.registerToolbarItem(existingId, { tooltip: caption || label, group });
+                const { caption, label, dataset: { visibilityCommandLabel } } = part.wrapped.title;
+                this.registerToolbarItem(existingId, { tooltip: visibilityCommandLabel || caption || label, group });
             }
         }
     }
